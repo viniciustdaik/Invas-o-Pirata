@@ -23,7 +23,7 @@ class Cannon {
     imageMode(CENTER);
     image(this.cannon_image, 0, 0, this.width, this.height);
     pop();
-    image(this.cannon_base, 70, windowHeight-605+20, 200, 200);//70, 20, 200, 200
+    image(this.cannon_base, 70, windowHeight-610+20, 200, 200);//70, 20, 200, 200
     noFill();
   }
 }
