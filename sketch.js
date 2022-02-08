@@ -6,13 +6,16 @@ const Constraint = Matter.Constraint;
 var engine, world, backgroundImg;
 var canvas, angle, tower, ground, cannon;
 var cannonBall;
-var leftbutton, leftbuttonimg, rightbutton, rightbuttonimg;
+var leftbutton, leftbuttonimg, 
+rightbutton, rightbuttonimg, 
+cannonballbutton, cannonballbuttonimg;
 
 function preload() {
   backgroundImg = loadImage("./assets/background.gif");
   towerImage = loadImage("./assets/tower.png");
   leftbuttonimg = loadImage("./assets/left_arrow.png");
   rightbuttonimg = loadImage("./assets/right_arrow.png");
+  cannonballbuttonimg = loadImage("./assets/cannonballbutton.png");
 }
 
 function setup() {
@@ -22,11 +25,15 @@ function setup() {
   angleMode(DEGREES);
   angle = 15;
   
-  leftbutton = createSprite(width/2-45, 45, 15, 15);
+  leftbutton = createSprite(width/2-85, 45, 15, 15);
   leftbutton.addImage("leftb", leftbuttonimg);
   
-  rightbutton = createSprite(width/2+45, 45, 15, 15);
+  rightbutton = createSprite(width/2+85, 45, 15, 15);
   rightbutton.addImage("leftb", rightbuttonimg);
+  
+  cannonballbutton = createSprite(width/2, 45, 15, 15);
+  cannonballbutton.addImage("cannonballb", cannonballbuttonimg);
+  cannonballbutton.scale = 0.3;
   
   ground = Bodies.rectangle(0, height - 1, width * 2, 1, { isStatic: true });
   World.add(world, ground);
@@ -42,8 +49,10 @@ function draw() {
   background(189);
   image(backgroundImg, 0, 0, width, height);
   
-  Engine.update(engine);
+  keyReleased();
 
+  Engine.update(engine);
+  
   rect(ground.position.x, ground.position.y, width * 2, 1);
   push();
   imageMode(CENTER);
@@ -58,8 +67,7 @@ function draw() {
 
 function keyReleased(){
   if(keyCode === DOWN_ARROW
-  ||touches.length > 0&&!mouseIsOver(leftbutton)
-  ||touches.length > 0&&!mouseIsOver(rightbutton)){
+  ||mouseIsOver(cannonballbutton)){
     cannonBall.shoot();
   }
 }
