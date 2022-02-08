@@ -22,12 +22,18 @@ function setup() {
   angleMode(DEGREES);
   angle = 15;
   
+  leftbutton = createSprite(width/2-45, 45, 15, 15);
+  leftbutton.addImage("leftb", leftbuttonimg);
+  
+  rightbutton = createSprite(width/2+45, 45, 15, 15);
+  rightbutton.addImage("leftb", rightbuttonimg);
+  
   ground = Bodies.rectangle(0, height - 1, width * 2, 1, { isStatic: true });
   World.add(world, ground);
-
+  
   tower = Bodies.rectangle(160, windowHeight-280, 160, 310, { isStatic: true });//160, 350
   World.add(world, tower);
-
+  
   cannon = new Cannon(180, windowHeight-490, 130, 100, angle);//180, 110, 130, 100, angle
   cannonBall = new CannonBall(cannon.x, cannon.y);
 }
@@ -46,10 +52,14 @@ function draw() {
 
   cannon.display();
   cannonBall.display();
+
+  drawSprites();
 }
 
 function keyReleased(){
-  if(keyCode === DOWN_ARROW){
+  if(keyCode === DOWN_ARROW
+  ||touches.length > 0&&!mouseIsOver(leftbutton)
+  ||touches.length > 0&&!mouseIsOver(rightbutton)){
     cannonBall.shoot();
   }
 }
