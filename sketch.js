@@ -94,8 +94,8 @@ function showCannonBalls(ball, index) {
 
 
 function keyReleased() {
-  if (keyCode === DOWN_ARROW
-    ||mouseIsOver(cannonballbutton)) {
+  if (keyCode === DOWN_ARROW){
+    //||mouseIsOver(cannonballbutton)) {
     balls[balls.length - 1].shoot();
   }
 }
