@@ -12,7 +12,7 @@ canvas {
   width:70px;
   height: 70px;
   border-radius: 35px;
-  background-image: url('../assets/cannonballbutton.png');
+  background-image: url('../assets/cannonball/cannonballbutton.png');
   background-color: #9ea7a7;
   background-position: center;
   background-size: cover;
