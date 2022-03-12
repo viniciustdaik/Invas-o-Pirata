@@ -2,7 +2,25 @@ html, body {
   margin: 0;
   padding: 0;
 }
+
 canvas {
   display: block;
   
+}
+
+.shootbutton{
+  width:70px;
+  height: 70px;
+  border-radius: 35px;
+  background-image: url('../assets/cannonballbutton.png');
+  background-color: #9ea7a7;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 10px;
+  display: inline-block;
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  outline: none;
 }
