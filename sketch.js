@@ -2,6 +2,7 @@ const Engine = Matter.Engine;
 const World = Matter.World;
 const Bodies = Matter.Bodies;
 const Constraint = Matter.Constraint;
+
 var engine, world, backgroundImg;
 var canvas, angle, tower, ground, cannon, boat;
 var balls = [];
@@ -55,11 +56,16 @@ function setup() {
   
   rightbutton = createSprite(width/2 + 85, 45, 15, 15);
   rightbutton.addImage("leftb", rightbuttonimg);
+  //old cannonballbutton
+  //cannonballbutton = createSprite(width/2, 45, 15, 15);
+  //cannonballbutton.addImage("cannonballb", cannonballbuttonimg);
+  //cannonballbutton.scale = 0.3;
   
-  cannonballbutton = createSprite(width/2, 45, 15, 15);
-  cannonballbutton.addImage("cannonballb", cannonballbuttonimg);
-  cannonballbutton.scale = 0.3;
-
+  cannonballbutton = createButton("");
+  cannonballbutton.position(width/2-35, 10);
+  cannonballbutton.class("shootbutton");
+  cannonballbutton.mousePressed(shoot);
+  
   ground = Bodies.rectangle(0, height - 1, width * 2, 1, { isStatic: true });
   World.add(world, ground);
 
@@ -220,7 +226,18 @@ function showBoats() {
 function keyReleased() {
   if (keyCode === DOWN_ARROW && !isGameOver) {
     balls[balls.length - 1].shoot();
+    //shoot();
   }
+}
+
+function shoot(){
+  var cannonBall = new CannonBall(cannon.x, cannon.y);
+  cannonBall.trajectory = [];
+  Matter.Body.setAngle(cannonBall.body, cannon.angle);
+  balls.push(cannonBall);
+  //if(!isGameOver){
+    balls[balls.length - 1].shoot();
+  //}
 }
 
 function gameOver() {
