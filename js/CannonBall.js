@@ -6,7 +6,7 @@ class CannonBall {
     this.r = 30;
     this.speed = 0.05;
     this.body = Bodies.circle(x, y, this.r, options);
-    this.image = loadImage("./assets/cannonball.png");
+    this.image = loadImage("./assets/cannonball/cannonball.png");
     this.animation = [this.image];
     this.trajectory = [];
     this.isSink = false;
@@ -20,9 +20,9 @@ class CannonBall {
   remove(index) {
     this.isSink = true;
     Matter.Body.setVelocity(this.body, { x: 0, y: 0 });
-
+    
     this.animation = waterSplashAnimation;
-    this.speed = 0.05;
+    this.speed = 0.05;//0.05
     this.r = 150;
     setTimeout(() => {
       Matter.World.remove(world, this.body);
