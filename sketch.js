@@ -146,10 +146,12 @@ function collisionWithBoat(index) {
       var collision = Matter.SAT.collides(balls[index].body, boats[i].body);
 
       if (collision.collided) {
-        score+=5
-          boats[i].remove(i);
+        if(boats[i].isBroken == false){
+          score+=5
+        }
+        boats[i].remove(i);
         
-
+        
         Matter.World.remove(world, balls[index].body);
         delete balls[index];
       }
@@ -213,7 +215,7 @@ function showBoats() {
           pirateSound.play();
           isLaughing = true;
         }
-        isGameOver = true;
+        //isGameOver = true;
         gameOver();
       }
     }
@@ -241,6 +243,7 @@ function shoot(){
 }
 
 function gameOver() {
+  isGameOver = true;
   swal(
     {
       title: `Fim de Jogo!!!`,
