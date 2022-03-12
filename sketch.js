@@ -41,7 +41,7 @@ function preload() {
   explosionSound = loadSound("./assets/cannon_explosion.mp3");
   leftbuttonimg = loadImage("./assets/left_arrow.png");
   rightbuttonimg = loadImage("./assets/right_arrow.png");
-  cannonballbuttonimg = loadImage("./assets/cannonballbutton.png");
+  cannonballbuttonimg = loadImage("./assets/cannonball/cannonballbutton.png");
 }
 
 function setup() {
